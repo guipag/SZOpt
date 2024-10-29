@@ -12,9 +12,12 @@ f2py -c solve_f_blas.f90 -m solve_f_openblas -lopenblas -llapack --opt="-O3 -mar
 # Usage
 
 The algorithm solve the same equation than (Simon Galvez et al., 2015) [[1]](#1). The `HB` matrix is the convolution matrix containing the impulse responses of all the microphones in the bright zone, and similary for the `HD` matrix with the dark zones RIs. The `d` vector is the vector containing the desired pressure in the bright zone. The $\lambda$ and $\beta$ parameters are the same than in (Simon Galvez et al., 2015) [[1]](#1).
+
+To use simple gradient descent the function to use is `solvegd`:
 ```
 solvegd(HB, HD, d, beta, lambda, [nbIter])
 ```
+To use conjugate gradient descent the function to use is `solvegdc`:
 ```
 solvegdc(HB, HD, d, beta, lambda, [nbIter])
 ```
