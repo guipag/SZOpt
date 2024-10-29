@@ -12,8 +12,14 @@ f2py -c solve_f_blas.f90 -m solve_f_openblas -lopenblas -llapack --opt="-O3 -mar
 # Usage
 
 The `HB` matrix is the convolution matrix containing the impulse responses of all the microphones in the bright zone. The `d` vector is the vector containing the desired pressure in the bright zone. The `H_t` matrix is the inverse matrix defined by :
-$$\bm{H}_T = (1-\beta)\bm{H}_B^\top\bm{H}_B+\beta\bm{H}_D^\top\bm{H}_D+\lambda\bm{I}$$
+$$\textbf{H}_T = (1-\beta)\textbf{H}_B^\top\textbf{H}_B+\beta\textbf{H}_D^\top\textbf{H}_D+\lambda\textbf{I}$$.
+
+The $\lambda$ and $\beta$ parameters are the same than in (Sim´on G´alvez et al., 2015) [[1]](#1).
 
 ```
 solvegdc(nbIter, beta, HB, d, H_t, size1, size2)
 ```
+
+# References
+
+<a id="1">[1]</a> Sim´on G´alvez, M., Elliott, S., and Cheer, J. (2015). “Time domain optimization of filters used in a loudspeaker array for personal audio,” IEEE/ACM Transactions on Audio, Speech, and Language Processing 23(11), 1869–1878.
